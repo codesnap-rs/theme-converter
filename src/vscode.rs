@@ -43,7 +43,7 @@ pub struct VSCodeThemeParser {
 }
 
 impl Parser for VSCodeThemeParser {
-    fn parse(&self) -> Dictionary {
+    fn parse(&self, name: &str) -> Dictionary {
         let get_color = |key: &str| -> Option<String> {
             self.theme
                 .colors
@@ -72,15 +72,7 @@ impl Parser for VSCodeThemeParser {
             global_settings.into_iter().chain(token_settings).collect();
 
         Dictionary::from_iter([
-            (
-                "name",
-                Value::String(
-                    self.theme
-                        .name
-                        .clone()
-                        .unwrap_or_else(|| "Converted Theme".into()),
-                ),
-            ),
+            ("name", Value::String(name.to_string())),
             ("uuid", Value::String(uuid::Uuid::new_v4().to_string())),
             ("settings", Value::Array(settings_array)),
         ])
