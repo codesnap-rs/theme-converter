@@ -1,6 +1,6 @@
 [package]
 name = "theme-converter"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "Convert VSCode/Neovim Theme to SublimeText .tmTheme"
 license = "MIT"
